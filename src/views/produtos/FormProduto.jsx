@@ -1,8 +1,8 @@
 import React from "react";
 import InputMask from 'react-input-mask';
-import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
+import { Button, Container, Divider, Form, Icon, FormTextArea } from 'semantic-ui-react';
 
-export default function FormCliente () {
+export default function FormProduto () {
 
     return (
 
@@ -12,7 +12,7 @@ export default function FormCliente () {
 
                 <Container textAlign='justified' >
 
-                    <h2> <span style={{color: 'darkgray'}}> Cliente &nbsp;<Icon name='angle double right' size="small" /> </span> Cadastro </h2>
+                    <h2> <span style={{color: 'darkgray'}}> Produto &nbsp;<Icon name='angle double right' size="small" /> </span> Cadastro </h2>
 
                     <Divider />
 
@@ -25,53 +25,51 @@ export default function FormCliente () {
                                 <Form.Input
                                     required
                                     fluid
-                                    label='Nome'
+                                    label='Título'
+                                    placeholder= 'Informe o título do produto'
                                     maxLength="100"
                                 />
 
                                 <Form.Input
                                     required
                                     fluid
-                                    label='CPF'>
-                                    <InputMask
-                                        required
-                                        mask="999.999.999-99"
-                                    /> 
-                                </Form.Input>
+                                    label='Código do Produto'
+                                    placeholder= 'Informe o código do produto'
+                                    maxLength="100"   
+                              />
 
                             </Form.Group>
                             
-                            <Form.Group>
+                            <Form.TextArea
+                                    fluid
+                                    label='Descrição'
+                                    placeholder= 'Informe a descrição do produto'
+                                    textarea name="postContent" rows={4} cols={40}
+                              />
+
+                            <Form.Group widths={"equal"}>
 
                                 <Form.Input
-                                    fluid
-                                    label='Fone Celular'
-                                    width={6}>
-                                    <InputMask 
-                                        mask="(99) 9999.9999"
-                                    /> 
-                                </Form.Input>
+                                        required
+                                        fluid
+                                        label='Valor Unitário'
+                                        placeholder= 'Informe o código do produto'
+                                        maxLength="255"   
+                                />
 
                                 <Form.Input
-                                    fluid
-                                    label='Fone Fixo'
-                                    width={6}>
-                                    <InputMask 
-                                        mask="(99) 9999.9999"
-                                    /> 
-                                </Form.Input>
+                                        fluid
+                                        label='Tempo de Entrega Mínimo em Minutos'
+                                        placeholder= '30'
+                                        maxLength="255"   
+                                />
 
                                 <Form.Input
-                                    fluid
-                                    label='Data Nascimento'
-                                    width={6}
-                                >
-                                    <InputMask 
-                                        mask="99/99/9999" 
-                                        maskChar={null}
-                                        placeholder="Ex: 20/03/1985"
-                                    /> 
-                                </Form.Input>
+                                        fluid
+                                        label='Tempo de Entrega Máximo em Minutos'
+                                        placeholder= '40'
+                                        maxLength="255"   
+                                />
 
                             </Form.Group>
                         
