@@ -3,7 +3,18 @@ import InputMask from 'react-input-mask';
 import { Button, Container, Divider, Form, Icon } from 'semantic-ui-react';
 
 export default function FormEntregador() {
-   
+    const estados = [
+        { key: 'al', value: 'al', text: 'Alagoas' },
+        { key: 'ba', value: 'ba', text: 'Bahia' },
+        { key: 'ce', value: 'ce', text: 'Ceará' },
+        { key: 'ma', value: 'ma', text: 'Maranhão' },
+        { key: 'pb', value: 'pb', text: 'Paraíba' },
+        { key: 'pe', value: 'pe', text: 'Pernambuco' },
+        { key: 'pi', value: 'pi', text: 'Piauí' },
+        { key: 'rn', value: 'rn', text: 'Rio Grande do Norte' },
+        { key: 'se', value: 'se', text: 'Sergipe' },
+    ];
+
     return (
 
         <div>
@@ -139,37 +150,23 @@ export default function FormEntregador() {
                             </Form.Group>
 
                             <Form.Select
-                                fluid
                                 label='UF'
-                                placeholder='Selecione'
-                                const countryOptions = [
-                                    { key: 'AM', value: 'AM', text: 'Amazonias' },
-                                    { key: 'AC', value: 'AC', text: 'Acre' },
-                                    { key: 'AL', value: 'AL', text: 'Alagoas' },
-                                    { key: 'PA', value: 'PA', text: 'Pará' },
-
-                                    
-                                  ]
-                            
-                                  const SelectExample = () => (
-                                    <Select placeholder='Select your country' options={countryOptions} />
-                                  )
-                                  export default SelectExample
-                                />
+                                placeholder="Selecione"
+                                options={estados}
+                            >
+                            </Form.Select>
 
                             <Form.Input
                                 fluid
                                 label='Complemento'
                                 maxLength="255"
                             />
-
+          
                             <Form.Radio
                                 fluid
                                 label='Ativo:'
-                                
-                
                             />
-
+               
                         </Form>
 
                         <div style={{ marginTop: '4%' }}>
