@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import InputMask from 'react-input-mask';
 import { Button, Container, Divider, Form, Icon, FormTextArea } from 'semantic-ui-react';
+import MenuSistema from '../../MenuSistema';
 
 export default function FormProduto() {
 
@@ -34,8 +35,10 @@ export default function FormProduto() {
     return (
 
         <div>
-
+            <MenuSistema tela={'produto'} />
             <div style={{ marginTop: '3%' }}>
+           
+
 
                 <Container textAlign='justified' >
 
