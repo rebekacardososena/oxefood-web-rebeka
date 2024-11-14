@@ -161,42 +161,50 @@ export default function FormEntregador() {
                                 label='Complemento'
                                 maxLength="255"
                             />
-          
-                            <Form.Radio
-                                fluid
-                                label='Ativo:'
-                            />
-               
+
+                            <Form.Field>
+                                <label>Ativo</label>
+                                <Form.Radio
+                                    label='Sim'
+                                    name="radioGroup"
+                                    value="sim"
+                                    style={{ marginRight: '1em' }}
+                                />
+                                <Form.Radio
+                                    label='Não'
+                                    name="radioGroup"
+                                    value="não"
+                                />
+                            </Form.Field>
+
+                            <div style={{ marginTop: '4%' }}>
+
+                                <Button
+                                    type="button"
+                                    inverted
+                                    circular
+                                    icon
+                                    labelPosition='left'
+                                    color='orange'
+                                >
+                                    <Icon name='reply' />
+                                    Voltar
+                                </Button>
+
+                                <Button
+                                    inverted
+                                    circular
+                                    icon
+                                    labelPosition='left'
+                                    color='blue'
+                                    floated='right'
+                                >
+                                    <Icon name='save' />
+                                    Salvar
+                                </Button>
+
+                            </div>
                         </Form>
-
-                        <div style={{ marginTop: '4%' }}>
-
-                            <Button
-                                type="button"
-                                inverted
-                                circular
-                                icon
-                                labelPosition='left'
-                                color='orange'
-                            >
-                                <Icon name='reply' />
-                                Voltar
-                            </Button>
-
-                            <Button
-                                inverted
-                                circular
-                                icon
-                                labelPosition='left'
-                                color='blue'
-                                floated='right'
-                            >
-                                <Icon name='save' />
-                                Salvar
-                            </Button>
-
-                        </div>
-
                     </div>
 
                 </Container>
