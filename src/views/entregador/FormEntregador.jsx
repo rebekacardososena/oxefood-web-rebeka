@@ -242,24 +242,18 @@ export default function FormEntregador() {
                                 value={enderecoComplemento}
                                 onChange={e => setEnderecoComplemento(e.target.value)}
                             />
-                            <FormGroup>
-                                <Form.Field>
+                            <FormGroup inline>
                                     <label>Ativo:</label>
                                     <Form.Radio
                                         label='Sim'
-                                        name="radioGroup"
-                                        value={true}
-                                        checked={ativo === true}
-                                        onChange={() => setAtivo(true)}
+                                        checked={ativo}
+                                        onChange={e => setAtivo(true)}
                                     />
                                     <Form.Radio
                                         label='Não'
-                                        name="radioGroup"
-                                        value={false}
-                                        checked={ativo === false}
-                                        onChange={() => setAtivo(false)}
+                                        checked={!ativo}
+                                        onChange={e => setAtivo(false)}
                                     />
-                                </Form.Field>
                             </FormGroup>
 
                             <div style={{ marginTop: '4%' }}>
