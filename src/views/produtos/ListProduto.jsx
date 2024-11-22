@@ -63,7 +63,7 @@ export default function ListProduto() {
 
                                     <Table.Row key={produtos.id}>
                                         <Table.Cell>{produtos.codigo}</Table.Cell>
-                                        <Table.Cell>{produtos.categoria.descricao}</Table.Cell>
+                                        <Table.Cell>{produtos.descricao}</Table.Cell>
                                         <Table.Cell>{produtos.titulo}</Table.Cell>
                                         <Table.Cell>{produtos.descricao}</Table.Cell>
                                         <Table.Cell>{produtos.valorUnitario}</Table.Cell>
