@@ -1,12 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { Button, Container, Divider, Icon, Table } from 'semantic-ui-react';
 import MenuSistema from '../../MenuSistema';
 
 export default function ListEntregador() {
 
     const [lista, setLista] = useState([]);
+    
 
     useEffect(() => {
         carregarLista();
@@ -106,7 +107,7 @@ export default function ListEntregador() {
                                                 color='green'
                                                 title='Clique aqui para editar os dados deste entregador'
                                                 icon>
-                                                <Icon name='edit' />
+                                                <Link to="/form-entregador" state={{ id: entregador.id }} style={{ color: 'green' }}> <Icon name='edit' /> </Link>
                                             </Button> &nbsp;
                                             <Button
                                                 inverted

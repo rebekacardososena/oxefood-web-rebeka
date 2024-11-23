@@ -1,8 +1,9 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InputMask from 'react-input-mask';
 import { Button, Container, Divider, Form, FormGroup, Icon } from 'semantic-ui-react';
 import MenuSistema from '../../MenuSistema';
+import { Link, useLocation } from "react-router-dom";
 
 export default function FormEntregador() {
     const [nome, setNome] = useState();
@@ -22,6 +23,34 @@ export default function FormEntregador() {
     const [enderecoUF, setEnderecoUF] = useState();
     const [ativo, setAtivo] = useState(true);
 
+    const { state } = useLocation();
+    const [idEntregador, setIdEntregador] = useState();
+
+    useEffect(() => {
+        if (state != null && state.id != null) {
+            axios.get("http://localhost:8081/api/entregador/" + state.id)
+                .then((response) => {
+                    setIdEntregador(response.data.id)
+                    setNome(response.data.nome)
+                    setCpf(response.data.cpf)
+                    setRg(response.data.rg)
+                    setDtaNascimento(formatarData(response.data.dtaNascimento))
+                    setFoneCelular(response.data.foneCelular)
+                    setFoneFixo(response.data.foneFixo)
+                    setQtdEntregasRealizadas(response.data.qtdEntregasRealizadas)
+                    setValorFrete(response.data.valorFrete)
+                    setEnderecoRua(response.data.enderecoRua)
+                    setEnderecoComplemento(response.data.enderecoComplemento)
+                    setEnderecoNumero(response.data.enderecoNumero)
+                    setEnderecoBairro(response.data.enderecoBairro)
+                    setEnderecoCidade(response.data.enderecoCidade)
+                    setEnderecoCep(response.data.enderecoCep)
+                    setEnderecoUF(response.data.enderecoUF)
+                    setAtivo(response.data.ativo)
+
+                })
+        }
+    }, [state])
 
     function salvar() {
 
@@ -43,14 +72,20 @@ export default function FormEntregador() {
             enderecoUF: enderecoUF,
             ativo: ativo
         }
+        if (idEntregador != null) { //Alteração:
+            axios.put("http://localhost:8081/api/entregador/" + idEntregador, entregadorRequest)
+                .then((response) => { console.log('Entregador alterado com sucesso.') })
+                .catch((error) => { console.log('Erro ao alterar um Entregador.') })
+        } else { //Cadastro: 
 
-        axios.post("http://localhost:8081/api/entregador", entregadorRequest)
-            .then((response) => {
-                console.log('Entregador cadastrado com sucesso.')
-            })
-            .catch((error) => {
-                console.log('Erro ao incluir Entregador.')
-            })
+            axios.post("http://localhost:8081/api/entregador", entregadorRequest)
+                .then((response) => {
+                    console.log('Entregador cadastrado com sucesso.')
+                })
+                .catch((error) => {
+                    console.log('Erro ao incluir Entregador.')
+                })
+        }
     }
     const estados = [
         { key: 'al', value: 'al', text: 'Alagoas' },
@@ -63,11 +98,20 @@ export default function FormEntregador() {
         { key: 'rn', value: 'rn', text: 'Rio Grande do Norte' },
         { key: 'se', value: 'se', text: 'Sergipe' },
     ];
+    function formatarData(dataParam) {
+
+        if (dataParam === null || dataParam === '' || dataParam === undefined) {
+            return ''
+        }
+
+        let arrayData = dataParam.split('-');
+        return arrayData[2] + '/' + arrayData[1] + '/' + arrayData[0];
+    }
 
     return (
 
         <div>
-        <MenuSistema tela={'entregador'} />
+            <MenuSistema tela={'entregador'} />
 
 
             <div style={{ marginTop: '3%' }}>
@@ -243,17 +287,17 @@ export default function FormEntregador() {
                                 onChange={e => setEnderecoComplemento(e.target.value)}
                             />
                             <FormGroup inline>
-                                    <label>Ativo:</label>
-                                    <Form.Radio
-                                        label='Sim'
-                                        checked={ativo}
-                                        onChange={e => setAtivo(true)}
-                                    />
-                                    <Form.Radio
-                                        label='Não'
-                                        checked={!ativo}
-                                        onChange={e => setAtivo(false)}
-                                    />
+                                <label>Ativo:</label>
+                                <Form.Radio
+                                    label='Sim'
+                                    checked={ativo}
+                                    onChange={e => setAtivo(true)}
+                                />
+                                <Form.Radio
+                                    label='Não'
+                                    checked={!ativo}
+                                    onChange={e => setAtivo(false)}
+                                />
                             </FormGroup>
 
                             <div style={{ marginTop: '4%' }}>
