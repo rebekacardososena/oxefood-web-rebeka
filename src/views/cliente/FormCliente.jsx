@@ -166,9 +166,8 @@ export default function FormCliente() {
                                     labelPosition='left'
                                     color='orange'
                                 >
-                                <Link to="/list-cliente" state={{ id: cliente.id }} style={{ color: 'green' }}> <Icon name='edit' /> </Link>
-
-                                    Voltar
+                                   <Icon name='reply' />
+                                   <Link to={'/list-cliente'}>Voltar</Link>
                                 </Button>
 
                                 <Button

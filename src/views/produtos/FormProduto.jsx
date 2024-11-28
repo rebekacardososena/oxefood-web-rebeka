@@ -151,7 +151,7 @@ export default function FormProduto() {
                                 color='orange'
                             >
                                 <Icon name='reply' />
-                                Voltar
+                                <Link to={'/list-produto'}>Voltar</Link>
                             </Button>
 
                             <Button
